@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ],
+  "schemes": [],
+  "securityDefinitions": {},
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "method",
+            "in": "body",
+            "description": "Tipo de busqueda",
+            "schema": {
+              "required": [
+                "name",
+                "email",
+                "id"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "nacho"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "xd@xd.com"
+                },
+                "id": {
+                  "type": "UUID",
+                  "example": "123e4567-e89b-12d3-a456-426614174000"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns user data",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "User doesnt exist",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "User not found"
+                }
+              },
+              "required": [
+                "message"
+              ],
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "xddddd"
+        },
+        "email": {
+          "type": "string",
+          "example": "xd"
+        },
+        "id": {
+          "type": "string",
+          "example": "123123"
+        }
+      }
+    }
+  }
+}
